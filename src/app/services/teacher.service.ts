@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Student } from '../models/student.model';
 import { OnlineClass } from '../models/onlineClass.model';
 import { Teacher } from '../models/teacher.model';
@@ -11,44 +11,44 @@ import { Doubt } from '../models/doubt.model';
 })
 export class TeacherService {
 
-  url: string = "http://localhost:8083";
+  url: string = "http://localhost:8083/api/teacher/";
 
   constructor(private http: HttpClient) { }
 
   addTeacher(teacher: Teacher) {
-    return this.http.post(this.url + "/teacher/addTeacher", teacher);
+    return this.http.post(this.url + "teacher/addTeacher", teacher);
   }
 
   getTeacherById(teacherId) {
-    return this.http.get<Teacher>(this.url + "/teacher/getTeacher" + teacherId);
+    return this.http.get<Teacher>(this.url + "teacher/getTeacher/" + teacherId);
   }
 
   addEvent(event) {
-    return this.http.post(this.url + "/event", event);
+    return this.http.post(this.url + "event", event);
   }
 
   getEventsByTeacherId(teacherId) {
-    return this.http.get<Event>(this.url + "/event/getEventsByTeacherId/" + teacherId);
+    return this.http.get<Event>(this.url + "event/getEventsByTeacherId/" + teacherId);
   }
 
   deleteEvent(eventId) {
-    return this.http.delete<Event>(this.url + "/event/deleteEvent/" + eventId);
+    return this.http.delete<Event>(this.url + "event/deleteEvent/" + eventId);
   }
 
   getClassLists() {
-    return this.http.get<OnlineClass>(this.url + "/class")
+    return this.http.get<OnlineClass>(this.url + "class")
   }
 
   getDoubtsByTeacherId(teacherId) {
-    return this.http.get<Doubt>(this.url + "/doubt/getDoubts/" + teacherId);
+    return this.http.get<Doubt>(this.url + "doubt/getDoubts/" + teacherId);
   }
 
   getStudentById(studentId: any) {
-    return this.http.get<Student>(this.url + "/student/getStudent" + studentId);
+    return this.http.get<Student[]>(this.url + "students", { headers : new HttpHeaders().set('Authorization',  `Bearer ${localStorage.getItem('token')}`)});
   }
 
   updateTeacher(teacher: Teacher) {
-    return this.http.put(this.url + "/teacher/updateTeacher", teacher);
+    return this.http.put(this.url + "updateTeacher", teacher);
   }
 
 

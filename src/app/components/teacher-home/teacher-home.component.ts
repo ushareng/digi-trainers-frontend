@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TeacherService } from 'src/app/services/teacher.service';
+import { Student } from 'src/app/models/student.model';
 
 @Component({
   selector: 'app-teacher-home',
@@ -12,7 +13,11 @@ export class TeacherHomeComponent implements OnInit {
   eventForm: FormGroup;
   classList;
   
-  constructor(private formBuilder: FormBuilder,private teacherService:TeacherService) { }
+  constructor(private formBuilder: FormBuilder,private teacherService:TeacherService) {
+    this.teacherService.getStudentById(2).subscribe(data => {
+      console.log(data);
+    })
+   }
 
   ngOnInit() {
 

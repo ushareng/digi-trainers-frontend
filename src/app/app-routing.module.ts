@@ -14,6 +14,8 @@ import { TeacherEditComponent } from './components/teacher-edit/teacher-edit.com
 import { TeacherEventComponent } from './components/teacher-event/teacher-event.component';
 import { TeacherFindStudentComponent } from './components/teacher-find-student/teacher-find-student.component';
 import { StudentRaiseDoubtComponent } from './components/student-raise-doubt/student-raise-doubt.component';
+import { StudentGuard } from './services/student.guard';
+import { TeacherGuard } from './services/teacher.guard';
 
 
 const routes: Routes = [
@@ -22,23 +24,24 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   {
     path: 'student', component: StudentComponent, children: [
-      { path: 'home', component: StudentHomeComponent },
-      { path: 'raise-doubt', component: StudentRaiseDoubtComponent },
-      { path: 'doubt', component: StudentDoubtComponent },
-      { path: 'edit-profile', component: StudentEditComponent },
-      { path: '**', component: StudentHomeComponent }
+      { path: 'home', component: StudentHomeComponent, canActivate: [StudentGuard] },
+      { path: 'raise-doubt', component: StudentRaiseDoubtComponent, canActivate: [StudentGuard] },
+      { path: 'doubt', component: StudentDoubtComponent, canActivate: [StudentGuard] },
+      { path: 'edit-profile', component: StudentEditComponent, canActivate: [StudentGuard] },
+      { path: '**', component: StudentHomeComponent, canActivate: [StudentGuard]  }
     ]
   },
   {
     path: 'teacher', component: TeacherComponent, children: [
-      { path: 'home', component: TeacherHomeComponent },
-      { path: 'events', component: TeacherEventComponent },
-      { path: 'doubt', component: TeacherDoubtComponent },
-      { path: 'find-student', component: TeacherFindStudentComponent },
-      { path: 'edit-profile', component: TeacherEditComponent },
-      { path: '**', component: TeacherHomeComponent }
+      { path: 'home', component: TeacherHomeComponent, canActivate : [TeacherGuard] },
+      { path: 'events', component: TeacherEventComponent, canActivate: [TeacherGuard]  },
+      { path: 'doubt', component: TeacherDoubtComponent, canActivate: [TeacherGuard]  },
+      { path: 'find-student', component: TeacherFindStudentComponent, canActivate: [TeacherGuard]  },
+      { path: 'edit-profile', component: TeacherEditComponent, canActivate: [TeacherGuard]  },
+      { path: '**', component: TeacherHomeComponent, canActivate: [TeacherGuard] }
     ]
   },
+  {path : '', redirectTo : 'home', pathMatch : 'full'},
   { path: '**', component: HomeComponent }
 ];
 
