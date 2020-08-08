@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
   selector: 'app-teacher-home',
@@ -9,10 +10,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class TeacherHomeComponent implements OnInit {
  
   eventForm: FormGroup;
+  classList;
   
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private teacherService:TeacherService) { }
 
   ngOnInit() {
+
+    this.teacherService.getClassLists().subscribe(data=>{
+      console.log(data)
+      this.classList=data;
+    })
+
     this.eventForm = this.formBuilder.group({
       subject: ['', [Validators.required]],
       topic: ['', [Validators.required]],
@@ -20,7 +28,8 @@ export class TeacherHomeComponent implements OnInit {
       meetingLink: ['', [Validators.required]],
       pptLink: ['', [Validators.required]],
       assignmentLink: ['', [Validators.required]],
-      description: ['', [Validators.required]]
+      description: ['', [Validators.required]],
+      className:['', [Validators.required]]
     });
   }
 
@@ -28,6 +37,10 @@ export class TeacherHomeComponent implements OnInit {
 
   verifyEvent(){
     console.log(this.eventForm.value)
+
+    this.teacherService.addEvent(this.eventForm.value).subscribe(data=>{
+      console.log(data)
+    })
   }
 
 }

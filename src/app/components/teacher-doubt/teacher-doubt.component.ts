@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
   selector: 'app-teacher-doubt',
@@ -7,11 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherDoubtComponent implements OnInit {
 
-  searchText:any;
-  
-  constructor() { }
+  searchText: any;
+  doubtsList;
+
+  constructor(private teacherService: TeacherService) { }
 
   ngOnInit() {
+    this.teacherService.getDoubtsByTeacherId(data => {
+      console.log(data)
+      this.doubtsList=data;
+    })
   }
 
 }

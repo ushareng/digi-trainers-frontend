@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeacherService } from 'src/app/services/teacher.service';
 
 @Component({
   selector: 'app-teacher-event',
@@ -8,10 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class TeacherEventComponent implements OnInit {
 
   searchText:any;
+  teacherId;
+  eventsList;
   
-  constructor() { }
+  constructor(private teacherService:TeacherService) { }
 
   ngOnInit() {
+    this.teacherService.getEventsByTeacherId(this.teacherId).subscribe(data=>{
+      console.log(data)
+      this.eventsList=data;
+    })
   }
 
 }
