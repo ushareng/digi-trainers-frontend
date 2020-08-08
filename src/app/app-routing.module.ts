@@ -12,6 +12,8 @@ import { TeacherHomeComponent } from './components/teacher-home/teacher-home.com
 import { TeacherDoubtComponent } from './components/teacher-doubt/teacher-doubt.component';
 import { TeacherEditComponent } from './components/teacher-edit/teacher-edit.component';
 import { TeacherEventComponent } from './components/teacher-event/teacher-event.component';
+import { TeacherFindStudentComponent } from './components/teacher-find-student/teacher-find-student.component';
+import { StudentRaiseDoubtComponent } from './components/student-raise-doubt/student-raise-doubt.component';
 
 
 const routes: Routes = [
@@ -21,6 +23,7 @@ const routes: Routes = [
   {
     path: 'student', component: StudentComponent, children: [
       { path: 'home', component: StudentHomeComponent },
+      { path: 'raise-doubt', component: StudentRaiseDoubtComponent },
       { path: 'doubt', component: StudentDoubtComponent },
       { path: 'edit-profile', component: StudentEditComponent },
       { path: '**', component: StudentHomeComponent }
@@ -31,6 +34,7 @@ const routes: Routes = [
       { path: 'home', component: TeacherHomeComponent },
       { path: 'events', component: TeacherEventComponent },
       { path: 'doubt', component: TeacherDoubtComponent },
+      { path: 'find-student', component: TeacherFindStudentComponent },
       { path: 'edit-profile', component: TeacherEditComponent },
       { path: '**', component: TeacherHomeComponent }
     ]

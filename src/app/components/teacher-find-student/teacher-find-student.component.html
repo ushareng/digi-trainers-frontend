@@ -1,0 +1,26 @@
+<div class="flex flex-wrap text-center w-full mb-3 pt-6">
+    <div class="xl:w-1/2 w-full xl:text-left text-center px-8">
+        <h1 class="text-2xl font-medium mb-3 text-gray-900">Search Student Details</h1>
+    </div>
+    <div class="xl:w-1/2 w-full xl:text-right text-center px-8">
+        <input
+            class="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username" type="text" placeholder="Search by Student ID" [(ngModel)]="searchText">
+    </div>
+</div>
+
+<div class="flex flex-wrap border p-5 mx-16">
+    <div class="w-1/2">
+        <div><span class="font-bold">Student ID : </span></div>
+        <div><span class="font-bold">Name : </span> </div>
+        <div><span class="font-bold">Class : </span></div>
+        <div><span class="font-bold">Contact : </span></div>
+    </div>
+    <div class="w-1/2">
+        <div><span class="font-bold">Father Name : </span></div>
+        <div><span class="font-bold">Father Contact : </span> </div>
+        <div><span class="font-bold">Mother Name : </span></div>
+        <div><span class="font-bold">Mother Contact : </span></div>
+    </div>
+    <div><span class="font-bold">Address : </span></div>
+</div>

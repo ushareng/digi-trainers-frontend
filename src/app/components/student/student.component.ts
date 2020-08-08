@@ -12,4 +12,8 @@ export class StudentComponent implements OnInit {
   ngOnInit() {
   }
 
+  logOut(){
+
+  }
+  
 }

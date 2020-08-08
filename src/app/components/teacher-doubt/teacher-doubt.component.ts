@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeacherDoubtComponent implements OnInit {
 
+  searchText:any;
+  
   constructor() { }
 
   ngOnInit() {

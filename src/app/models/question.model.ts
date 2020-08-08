@@ -1,7 +1,6 @@
 import { Event } from './event.model';
 
 export class Question{
-    id:any;
     question:any;
     optionA:any;
     optionB:any;

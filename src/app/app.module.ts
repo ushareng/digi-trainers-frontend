@@ -19,6 +19,9 @@ import { TeacherDoubtComponent } from './components/teacher-doubt/teacher-doubt.
 import { TeacherEventComponent } from './components/teacher-event/teacher-event.component';
 import { StudentEditComponent } from './components/student-edit/student-edit.component';
 import { TeacherEditComponent } from './components/teacher-edit/teacher-edit.component';
+import { TeacherFindStudentComponent } from './components/teacher-find-student/teacher-find-student.component';
+import { HttpClientModule } from '@angular/common/http';
+import { StudentRaiseDoubtComponent } from './components/student-raise-doubt/student-raise-doubt.component';
 
 @NgModule({
   declarations: [
@@ -36,13 +39,16 @@ import { TeacherEditComponent } from './components/teacher-edit/teacher-edit.com
     TeacherDoubtComponent,
     TeacherEventComponent,
     StudentEditComponent,
-    TeacherEditComponent
+    TeacherEditComponent,
+    TeacherFindStudentComponent,
+    StudentRaiseDoubtComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     NgxPaginationModule
   ],
   providers: [],

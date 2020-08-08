@@ -1,1 +1,77 @@
-<p>student-doubt works!</p>
+<div class="flex flex-wrap text-center w-full mb-3 pt-6">
+    <div class="xl:w-1/2 w-full xl:text-left text-center px-8">
+        <h1 class="text-2xl font-medium mb-3 text-gray-900">My Doubt Classes</h1>
+    </div>
+    <div class="xl:w-1/2 w-full xl:text-right text-center px-8">
+        <input
+            class="shadow appearance-none border rounded w-64 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username" type="text" placeholder="Search by Topic" [(ngModel)]="searchText">
+    </div>
+</div>
+<div class="flex flex-col px-2" style="overflow-x: hidden;">
+    <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+            <table class="min-w-full">
+                <thead>
+                    <tr>
+                        <th
+                            class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            Subject
+                        </th>
+                        <th
+                            class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            Topic
+                        </th>
+                        <th
+                            class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            Event Date
+                        </th>
+                        <th
+                            class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            Links
+                        </th>
+                        <th
+                            class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            Description
+                        </th>
+                        <th
+                            class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            Join Class
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white">
+                    <!-- <ng-container *ngIf="(eventsList | eventSearch:searchText) as result"> -->
+                    <ng-container *ngIf="eventsList">
+                        <tr *ngFor="let e of result| paginate: { itemsPerPage: 5, currentPage: p }">
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">{{e.subject}}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">{{e.topic}}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">{{e.eventDate|date:'medium'}}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">{{e.links}}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <div class="text-sm leading-5 text-gray-900">{{e.description}}</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                <a
+                                    class="text-green-600 hover:text-green-900 mx-1 rounded-full bg-green-100 p-2 cursor-pointer">Click
+                                    Here</a>
+                            </td>
+
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="py-3 text-right pr-8">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

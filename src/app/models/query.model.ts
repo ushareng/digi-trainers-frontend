@@ -1,6 +1,8 @@
+import { User } from './user.model';
+
 export class Query{
-    id:any;
     subject:any;
     description:any;
     createdOn:any;
+    user:User;
 }
